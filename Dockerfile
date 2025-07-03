@@ -16,15 +16,14 @@ WORKDIR /var/www/html
 COPY composer.json composer.lock ./
 RUN composer install --no-dev --optimize-autoloader
 
-# 4) Zkopírujeme .env (SMTP údaje) do kontejneru
-COPY .env ./
+# (Řádek COPY .env ./ smažeme – proměnné běží z ENV v prostředí Renderu)
 
-# 5) Zkopírujeme zbytek kódu
+# 4) Zkopírujeme zbytek kódu
 COPY . .
 
-# 6) Zapneme Apache mod_rewrite (pokud by bylo potřeba)
+# 5) Zapneme Apache mod_rewrite (pokud by bylo potřeba)
 RUN a2enmod rewrite
 
-# 7) Exponujeme port 80 a spustíme Apache
+# 6) Exponujeme port 80 a spustíme Apache
 EXPOSE 80
 CMD ["apache2-foreground"]
