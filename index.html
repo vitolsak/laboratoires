@@ -373,16 +373,49 @@
                 currentYearEl.textContent = new Date().getFullYear();
             }
             
-            // Zpracování odeslání kontaktního formuláře
-            const contactForm = document.getElementById('contact-form');
-            if (contactForm) {
-                contactForm.addEventListener('submit', function(e) {
-                    e.preventDefault(); 
-                    const feedbackDiv = document.getElementById('form-feedback');
-                    feedbackDiv.textContent = 'Odesílání formuláře není v tomto náhledu aktivní.';
-                    feedbackDiv.style.color = 'orange';
-                });
+// Zpracování odeslání kontaktního formuláře
+const contactForm = document.getElementById('contact-form');
+if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+        e.preventDefault(); // Zabráníme klasickému odeslání formuláře
+
+        const feedbackDiv = document.getElementById('form-feedback');
+        const submitButton = contactForm.querySelector('button[type="submit"]');
+        const formData = new FormData(contactForm);
+
+        // Zobrazíme zprávu o odesílání a zablokujeme tlačítko
+        feedbackDiv.textContent = 'Odesílám...';
+        feedbackDiv.style.color = 'gray';
+        submitButton.disabled = true;
+
+        // Odešleme data na server pomocí JavaScriptu
+        fetch('odeslat_formular.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json()) // Očekáváme odpověď ve formátu JSON
+        .then(data => {
+            // Zobrazíme odpověď ze serveru
+            feedbackDiv.textContent = data.message;
+            if (data.success) {
+                feedbackDiv.style.color = 'green';
+                contactForm.reset(); // Vymažeme formulář po úspěšném odeslání
+            } else {
+                feedbackDiv.style.color = 'red';
             }
+        })
+        .catch(error => {
+            // Pro případ, že by nastala chyba při komunikaci se serverem
+            console.error('Chyba při odesílání formuláře:', error);
+            feedbackDiv.textContent = 'Došlo k chybě. Zkuste to prosím později.';
+            feedbackDiv.style.color = 'red';
+        })
+        .finally(() => {
+            // Vždy znovu aktivujeme tlačítko
+            submitButton.disabled = false;
+        });
+    });
+}
         });
     </script>
 </body>
