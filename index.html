@@ -10,9 +10,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
     
-    <link rel="stylesheet" href="style.css">
-
     <script>
+        // Konfigurace Tailwindu
         tailwind.config = {
             theme: {
                 extend: {
@@ -30,8 +29,42 @@
             }
         }
     </script>
+    <style>
+        /* Vložený obsah souboru style.css */
+        body {
+            background-color: #ffffff;
+        }
+        .page {
+            display: none;
+        }
+        .page.active {
+            display: block;
+        }
+        .fade-in {
+            animation: fadeInAnimation 0.6s ease-out forwards;
+        }
+        @keyframes fadeInAnimation {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        /* Skrytí scrollbaru */
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none; 
+        }
+    </style>
 </head>
 <body class="text-brand-text font-sans">
+    <!-- Header -->
     <header class="bg-white/80 backdrop-blur-md sticky top-0 z-50 shadow-sm">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <a href="#home" class="h-10 route-link">
@@ -56,6 +89,7 @@
     </header>
 
     <main>
+        <!-- STRÁNKA: HOME -->
         <div id="home" class="page">
             <section class="bg-white pt-16 pb-20 md:py-24">
                 <div class="container mx-auto px-6">
@@ -72,17 +106,19 @@
                     </div>
                 </div>
             </section>
-            <section class="py-12 bg-white">
+            <!-- Upravená sekce s logy -->
+            <section class="py-16 bg-white">
                 <div class="container mx-auto px-6 text-center">
-                    <h4 class="text-sm font-semibold text-gray-500 tracking-wider uppercase mb-8">Kde naše produkty najdete</h4>
-                    <div class="flex flex-wrap justify-center items-center gap-x-12 gap-y-6">
-                        <img loading="lazy" src="https://logo.clearbit.com/lidl.com" alt="Lidl" class="h-8 grayscale hover:grayscale-0 transition-all duration-300">
-                        <img loading="lazy" src="https://logo.clearbit.com/penny.cz" alt="Penny Market" class="h-8 grayscale hover:grayscale-0 transition-all duration-300">
-                        <img loading="lazy" src="https://logo.clearbit.com/tesco.com" alt="Tesco" class="h-8 grayscale hover:grayscale-0 transition-all duration-300">
-                        <img loading="lazy" src="https://logo.clearbit.com/rohlik.cz" alt="Rohlík.cz" class="h-6 grayscale hover:grayscale-0 transition-all duration-300">
-                        <img loading="lazy" src="https://logo.clearbit.com/globus.cz" alt="Globus" class="h-8 grayscale hover:grayscale-0 transition-all duration-300">
-                        <img loading="lazy" src="https://logo.clearbit.com/mojehruska.cz" alt="Hruška" class="h-8 grayscale hover:grayscale-0 transition-all duration-300">
-                        <img loading="lazy" src="https://logo.clearbit.com/cba.cz" alt="CBA" class="h-8 grayscale hover:grayscale-0 transition-all duration-300">
+                    <h4 class="text-sm font-semibold text-gray-500 tracking-wider uppercase mb-10">Kde naše produkty najdete</h4>
+                    <div class="flex flex-wrap justify-center items-center gap-x-12 sm:gap-x-16 gap-y-8">
+                        <!-- Změna: Vrácena třída "grayscale" a přidán efekt "hover:grayscale-0" -->
+                        <img loading="lazy" src="https://logo.clearbit.com/lidl.com" alt="Lidl" class="h-12 grayscale hover:grayscale-0 transition-all duration-300">
+                        <img loading="lazy" src="https://logo.clearbit.com/penny.cz" alt="Penny Market" class="h-12 grayscale hover:grayscale-0 transition-all duration-300">
+                        <img loading="lazy" src="https://logo.clearbit.com/tesco.com" alt="Tesco" class="h-12 grayscale hover:grayscale-0 transition-all duration-300">
+                        <img loading="lazy" src="https://logo.clearbit.com/rohlik.cz" alt="Rohlík.cz" class="h-10 grayscale hover:grayscale-0 transition-all duration-300">
+                        <img loading="lazy" src="https://logo.clearbit.com/globus.cz" alt="Globus" class="h-12 grayscale hover:grayscale-0 transition-all duration-300">
+                        <img loading="lazy" src="https://logo.clearbit.com/mojehruska.cz" alt="Hruška" class="h-12 grayscale hover:grayscale-0 transition-all duration-300">
+                        <img loading="lazy" src="https://logo.clearbit.com/cba.cz" alt="CBA" class="h-12 grayscale hover:grayscale-0 transition-all duration-300">
                     </div>
                 </div>
             </section>
@@ -127,7 +163,7 @@
                 </div>
             </section>
         </div>
-
+        <!-- STRÁNKA: PRODUKTY (plný výpis) -->
         <div id="produkty" class="page">
              <section class="pt-24 pb-16 md:pt-32 md:pb-24 bg-brand-secondary">
                 <div class="container mx-auto px-6">
@@ -145,13 +181,13 @@
                 </div>
             </section>
         </div>
-
+        <!-- STRÁNKY DETAILŮ PRODUKTŮ -->
         <div id="detail-energie-pamet" class="page"><section class="py-16 md:py-24 bg-white"><div class="container mx-auto px-6"><div class="flex flex-col md:flex-row items-center gap-12 md:gap-16"><div class="md:w-5/12"><img loading="lazy" src="obrazky/Energie.jpg" class="rounded-lg shadow-lg w-full"></div><div class="md:w-7/12"><h2 class="text-4xl md:text-5xl font-serif text-brand-primary mb-2">Energie & Paměť</h2><p class="text-brand-accent text-lg mb-6 font-medium">Pro vaši bystrou mysl</p><div class="space-y-4 text-gray-600"><p>Ať už se učíte na zkoušku, připravujete důležitou prezentaci, nebo se jen potřebujete plně soustředit na práci, náš produkt je váš ideální partner pro podporu kognitivních funkcí.</p><div><h4 class="font-bold text-brand-primary text-xl mb-2">Klíčové výhody:</h4><ul class="list-disc list-inside space-y-1"><li>Podporuje paměť a schopnost učení.</li><li>Zlepšuje koncentraci a mentální výkonnost.</li><li>Přispívá k lepšímu prokrvení mozku.</li></ul></div><div><h4 class="font-bold text-brand-primary text-xl mb-2">Složení:</h4><p>Účinná kombinace extraktu z Ginkgo biloby a optimální dávky kofeinu pro maximální synergický efekt.</p></div><div><h4 class="font-bold text-brand-primary text-xl mb-2">Dávkování:</h4><p>Užívejte 1 kapsli denně, ideálně ráno nebo v situacích vyžadujících zvýšené soustředění.</p></div><a href="#produkty" class="route-link inline-block text-brand-accent pt-4 hover:underline">← Zpět na přehled produktů</a></div></div></div></div></section></div>
         <div id="detail-magnesium" class="page"><section class="py-16 md:py-24 bg-brand-secondary"><div class="container mx-auto px-6"><div class="flex flex-col md:flex-row-reverse items-center gap-12 md:gap-16"><div class="md:w-5/12"><img loading="lazy" src="obrazky/Magnesium.jpg" class="rounded-lg shadow-lg w-full"></div><div class="md:w-7/12"><h2 class="text-4xl md:text-5xl font-serif text-brand-primary mb-2">Magnesium Komplex</h2><p class="text-brand-accent text-lg mb-6 font-medium">Proti únavě a vyčerpání</p><div class="space-y-4 text-gray-600"><p>Hořčík (magnesium) je pro náš organismus naprosto klíčový minerál. Podílí se na stovkách biochemických procesů v těle a jeho nedostatek se může projevit zvýšenou únavou, svalovými křečemi či podrážděností.</p><div><h4 class="font-bold text-brand-primary text-xl mb-2">Klíčové výhody:</h4><ul class="list-disc list-inside space-y-1"><li>Přispívá ke snížení míry únavy a vyčerpání.</li><li>Podporuje normální činnost svalů.</li><li>Napomáhá normální činnosti nervové soustavy a psychické pohodě.</li></ul></div><div><h4 class="font-bold text-brand-primary text-xl mb-2">Složení:</h4><p>Náš Magnesium Komplex obsahuje vysoce vstřebatelnou formu bisglycinátu hořečnatého, která je šetrná k zažívání a zajišťuje maximální využitelnost.</p></div><div><h4 class="font-bold text-brand-primary text-xl mb-2">Dávkování:</h4><p>Doporučené dávkování je 1-2 kapsle denně, ideálně večer před spaním.</p></div><a href="#produkty" class="route-link inline-block text-brand-accent pt-4 hover:underline">← Zpět na přehled produktů</a></div></div></div></div></section></div>
         <div id="detail-probiotika" class="page"><section class="py-16 md:py-24 bg-white"><div class="container mx-auto px-6"><div class="flex flex-col md:flex-row items-center gap-12 md:gap-16"><div class="md:w-5/12"><img loading="lazy" src="obrazky/Probiotika.jpg" class="rounded-lg shadow-lg w-full"></div><div class="md:w-7/12"><h2 class="text-4xl md:text-5xl font-serif text-brand-primary mb-2">Probiotika</h2><p class="text-brand-accent text-lg mb-6 font-medium">Pro zdravou střevní mikroflóru</p><div class="space-y-4 text-gray-600"><p>Zdraví střev je základem celkové vitality. Naše probiotika obsahují komplex živých kultur pro podporu rovnováhy vašeho trávicího systému.</p><div><h4 class="font-bold text-brand-primary text-xl mb-2">Klíčové výhody:</h4><ul class="list-disc list-inside space-y-1"><li>Podporuje optimální funkci trávicího traktu.</li><li>Přispívá k udržení zdravé střevní mikroflóry.</li><li>Napomáhá posílení přirozené obranyschopnosti.</li></ul></div><div><h4 class="font-bold text-brand-primary text-xl mb-2">Složení:</h4><p>Směs vybraných probiotických kmenů v enterosolventní kapsli, která chrání kultury před žaludeční kyselinou.</p></div><div><h4 class="font-bold text-brand-primary text-xl mb-2">Dávkování:</h4><p>Užívejte 1 kapsli denně, nejlépe nalačno.</p></div><a href="#produkty" class="route-link inline-block text-brand-accent pt-4 hover:underline">← Zpět na přehled produktů</a></div></div></div></div></section></div>
         <div id="detail-vitamin-c" class="page"><section class="py-16 md:py-24 bg-brand-secondary"><div class="container mx-auto px-6"><div class="flex flex-col md:flex-row-reverse items-center gap-12 md:gap-16"><div class="md:w-5/12"><img loading="lazy" src="obrazky/Vitamin.jpg" class="rounded-lg shadow-lg w-full"></div><div class="md:w-7/12"><h2 class="text-4xl md:text-5xl font-serif text-brand-primary mb-2">Vitamín C</h2><p class="text-brand-accent text-lg mb-6 font-medium">Klíčový antioxidant pro vitalitu</p><div class="space-y-4 text-gray-600"><p>Vitamín C je nezbytný pro mnoho tělesných funkcí, od podpory imunity po tvorbu kolagenu pro zdravou pokožku. Naše forma s postupným uvolňováním zajišťuje optimální hladinu po celý den.</p><div><h4 class="font-bold text-brand-primary text-xl mb-2">Klíčové výhody:</h4><ul class="list-disc list-inside space-y-1"><li>Podporuje normální funkci imunitního systému.</li><li>Chrání buňky před oxidativním stresem.</li><li>Přispívá ke správné tvorbě kolagenu.</li></ul></div><div><h4 class="font-bold text-brand-primary text-xl mb-2">Složení:</h4><p>Čistá kyselina L-askorbová ve formě "time-release" pro postupné uvolňování během dne.</p></div><div><h4 class="font-bold text-brand-primary text-xl mb-2">Dávkování:</h4><p>Užívejte 1 tabletu denně společně s jídlem.</p></div><a href="#produkty" class="route-link inline-block text-brand-accent pt-4 hover:underline">← Zpět na přehled produktů</a></div></div></div></div></section></div>
         <div id="detail-imunita" class="page"><section class="py-16 md:py-24 bg-white"><div class="container mx-auto px-6"><div class="flex flex-col md:flex-row items-center gap-12 md:gap-16"><div class="md:w-5/12"><img loading="lazy" src="obrazky/Imunita.jpg" class="rounded-lg shadow-lg w-full"></div><div class="md:w-7/12"><h2 class="text-4xl md:text-5xl font-serif text-brand-primary mb-2">Imunita</h2><p class="text-brand-accent text-lg mb-6 font-medium">Podpora vaší obranyschopnosti</p><div class="space-y-4 text-gray-600"><p>Náš imunitní systém je komplexní síť buněk a procesů, která nás neustále chrání. V období zvýšené zátěže, jako jsou chladné měsíce nebo stresová období, si zaslouží naši podporu.</p><div><h4 class="font-bold text-brand-primary text-xl mb-2">Klíčové výhody:</h4><ul class="list-disc list-inside space-y-1"><li>Přispívá k normální funkci imunitního systému.</li><li>Pomáhá chránit buňky před oxidativním stresem.</li><li>Podporuje snížení míry únavy a vyčerpání.</li></ul></div><div><h4 class="font-bold text-brand-primary text-xl mb-2">Složení:</h4><p>Silná trojice pro vaši obranu: Vitamín C, Vitamín D a Zinek v optimálním poměru a vysoce vstřebatelných formách.</p></div><div><h4 class="font-bold text-brand-primary text-xl mb-2">Dávkování:</h4><p>Užívejte 1 kapsli denně společně s jídlem.</p></div><a href="#produkty" class="route-link inline-block text-brand-accent pt-4 hover:underline">← Zpět na přehled produktů</a></div></div></div></div></section></div>
-        
+        <!-- STRÁNKA: O NÁS (plná verze) -->
         <div id="o-nas" class="page">
             <section class="pt-24 pb-16 md:pt-32 md:pb-24 bg-brand-secondary">
                 <div class="container mx-auto px-6">
@@ -165,7 +201,7 @@
                 </div>
             </section>
         </div>
-
+        <!-- STRÁNKA: KONTAKT -->
         <div id="kontakt" class="page">
             <section class="py-16 md:py-24 bg-white">
                  <div class="container mx-auto px-6">
@@ -200,9 +236,8 @@
                                 </div>
                             </div>
                         </div>
-                        
                         <div class="md:w-1/2 bg-brand-secondary p-8 rounded-lg shadow-sm">
-                            <form id="contact-form" action="odeslat_formular.php" method="POST">
+                            <form id="contact-form">
                                 <div class="mb-4">
                                     <label for="name" class="block text-brand-text mb-1 font-medium">Jméno</label>
                                     <input type="text" id="name" name="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg" required>
@@ -224,7 +259,7 @@
             </section>
         </div>
     </main>
-
+    <!-- Footer -->
     <footer class="bg-white text-brand-text border-t border-gray-200">
         <div class="container mx-auto px-6 py-12">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -262,6 +297,93 @@
         </div>
     </footer>
 
-    <script src="script.js" defer></script>
+    <script>
+        // Vložený obsah souboru script.js
+        document.addEventListener('DOMContentLoaded', function () {
+            const pages = document.querySelectorAll('.page');
+            const links = document.querySelectorAll('.route-link');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            function showPage(targetId) {
+                const pageId = targetId.startsWith('#') ? targetId.substring(1) : 'home';
+                
+                pages.forEach(page => {
+                    if (page.id === pageId) {
+                        page.classList.add('active');
+                    } else {
+                        page.classList.remove('active');
+                    }
+                });
+
+                window.scrollTo(0, 0);
+                mobileMenu.classList.add('hidden');
+            }
+
+            function handleRouteChange() {
+                const hash = window.location.hash || '#home';
+                showPage(hash);
+                const activePage = document.querySelector('.page.active');
+                if (activePage) {
+                    activePage.classList.remove('fade-in');
+                    void activePage.offsetWidth; // Trigger reflow
+                    activePage.classList.add('fade-in');
+                }
+            }
+
+            links.forEach(link => {
+                link.addEventListener('click', function (e) {
+                    const href = this.getAttribute('href');
+                    if (href && href.startsWith('#')) {
+                        e.preventDefault();
+                        if (window.location.hash !== href) {
+                            window.location.hash = href;
+                        } else {
+                            handleRouteChange();
+                        }
+                    }
+                });
+            });
+
+            window.addEventListener('hashchange', handleRouteChange);
+            handleRouteChange();
+
+            // Interaktivní karusel produktů
+            const carousel = document.getElementById('product-carousel');
+            const scrollLeftBtn = document.getElementById('scroll-left');
+            const scrollRightBtn = document.getElementById('scroll-right');
+            if (carousel) {
+                const scrollAmount = 336;
+                scrollLeftBtn.addEventListener('click', () => {
+                    carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+                });
+                scrollRightBtn.addEventListener('click', () => {
+                    carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+                });
+            }
+
+            // Mobilní menu
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Aktuální rok v patičce
+            const currentYearEl = document.getElementById('current-year');
+            if (currentYearEl) {
+                currentYearEl.textContent = new Date().getFullYear();
+            }
+            
+            // Zpracování odeslání kontaktního formuláře
+            const contactForm = document.getElementById('contact-form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault(); 
+                    const feedbackDiv = document.getElementById('form-feedback');
+                    feedbackDiv.textContent = 'Odesílání formuláře není v tomto náhledu aktivní.';
+                    feedbackDiv.style.color = 'orange';
+                });
+            }
+        });
+    </script>
 </body>
 </html>
