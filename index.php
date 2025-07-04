@@ -49,7 +49,7 @@ include 'header.php';
                 <div class="md:w-1/2 flex justify-center"><img src="obrazky/tym.png" class="w-full md:w-3/4 rounded-lg shadow-lg"></div>
                 <div class="md:w-7/12">
                     <h2 class="text-3xl md:text-4xl font-serif text-brand-primary mb-4">Naše filozofie</h2>
-                    <p class="text-lg text-gray-600 mb-4">Ve Laboratoires spojujeme přesnost vědy s moudrostí přírody. Naším cílem je vyvíjet vysoce kvalitní a funkční doplňky stravy, které jsou dostupné pro každého – bez kompromisů.</p>
+                    <p class="text-lg text-gray-600 mb-4">Ve Laboratoires spojujeme přesnost vědy s moudrostí přírody. Naším cílem je vyvíjet vysoce kvalitní a funkční doplňky stravy, které jsou dostupné pro každého – bez kompromisů.Každý produkt je výsledkem pečlivého výzkumu a vývoje, za kterým stojí náš tým zkušených farmaceutů a biochemiků.</p>
                     <a href="o-nas.php" class="btn-primary mt-4 inline-block bg-transparent border border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-white font-bold py-2 px-8 rounded-full">Více o nás</a>
                 </div>
             </div>
