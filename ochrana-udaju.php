@@ -5,7 +5,8 @@ include 'header.php';
 
 <main class="fade-in">
     <section class="py-16 md:py-24 bg-white">
-        <div class="container mx-auto px-6 max-w-4xl legal-content">
+        <!-- Změna zde: odstraněna třída max-w-4xl pro plnou šířku containeru -->
+        <div class="container mx-auto px-6 legal-content">
             <h2>Zásady zpracování osobních údajů (GDPR)</h2>
             <p>V P&A Thrax, s.r.o. si vážíme důvěry, kterou nám naši klienti, uchazeči o zaměstnání i obchodní partneři projevují. Ochrana vašich osobních údajů je pro nás prioritou, a proto dbáme na jejich bezpečné zpracování v souladu s platnými právními předpisy, včetně Nařízení Evropského parlamentu a Rady (EU) 2016/679 (Obecné nařízení o ochraně osobních údajů, známé jako GDPR).</p>
             
