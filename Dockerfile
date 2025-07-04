@@ -16,9 +16,6 @@ WORKDIR /var/www/html
 COPY composer.json composer.lock ./
 RUN composer install --no-dev --optimize-autoloader
 
-# 4) Zkopírujeme .env (SMTP údaje) do kontejneru
-COPY .env ./
-
 # 5) Zkopírujeme zbytek kódu
 COPY . .
 
