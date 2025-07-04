@@ -1,68 +1,18 @@
-<!DOCTYPE html>
-<html lang="cs">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Obchodní podmínky - Laboratoires.cz</title>
-    <link rel="icon" href="obrazky/logo.jpg" type="image/jpeg">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: { sans: ['Inter', 'sans-serif'], serif: ['Playfair Display', 'serif'], },
-                    colors: { 'brand-primary': '#2d332a', 'brand-secondary': '#f8f7f5', 'brand-accent': '#b9a284', 'brand-text': '#1c1c1c', }
-                }
-            }
-        }
-    </script>
-    <style>
-        .legal-content h2 { font-family: 'Playfair Display', serif; font-size: 1.875rem; color: #2d332a; margin-bottom: 1.5rem; }
-        .legal-content h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: #2d332a; margin-top: 2.5rem; margin-bottom: 1rem; border-bottom: 1px solid #f8f7f5; padding-bottom: 0.5rem;}
-        .legal-content p, .legal-content li { font-size: 1rem; line-height: 1.75; color: #4b5563; margin-bottom: 1rem; }
-        .legal-content ul { list-style-position: inside; list-style-type: disc; padding-left: 1rem; }
-        .legal-content strong { color: #1c1c1c; font-weight: 700; }
-    </style>
-</head>
-<body class="text-brand-text font-sans">
+<?php 
+$pageTitle = "Obchodní podmínky - Laboratoires.cz";
+include 'header.php'; 
+?>
 
-    <header class="bg-white/80 backdrop-blur-md sticky top-0 z-50 shadow-sm">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="index.html" class="h-10">
-                <img src="obrazky/logo.jpg" alt="Logo Laboratoires" class="h-full w-auto">
-            </a>
-            <nav class="hidden md:flex items-center space-x-8">
-                <a href="produkty.html" class="nav-link text-brand-text hover:text-brand-accent">Produkty</a>
-                <a href="o-nas.html" class="nav-link text-brand-text hover:text-brand-accent">O nás</a>
-                <a href="kontakt.html" class="nav-link text-brand-text hover:text-brand-accent">Kontakt</a>
-            </nav>
-            <div class="flex items-center space-x-4">
-                <button id="mobile-menu-button" class="md:hidden p-2 rounded-full hover:bg-gray-100 transition-colors">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-brand-text"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg>
-                </button>
-            </div>
-        </div>
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100">
-            <a href="produkty.html" class="block text-center py-3 px-6 text-brand-text hover:bg-gray-100 transition-colors">Produkty</a>
-            <a href="o-nas.html" class="block text-center py-3 px-6 text-brand-text hover:bg-gray-100 transition-colors">O nás</a>
-            <a href="kontakt.html" class="block text-center py-3 px-6 text-brand-text hover:bg-gray-100 transition-colors">Kontakt</a>
-        </div>
-    </header>
+<section class="py-16 md:py-24 bg-white">
+    <div class="container mx-auto px-6 max-w-4xl legal-content">
+        <h2>Obchodní podmínky</h2>
+        <p><strong>Provozovatel:</strong> P&A Thrax, s.r.o.<br>
+        <strong>IČO:</strong> 28657985<br>
+        <strong>DIČ:</strong> CZ28657985 , Detail plátce DPH<br>
+        <strong>Adresa:</strong> Holubova 1204/27, Vítkovice, 703 00 Ostrava<br>
+        <strong>Telefon:</strong> +420 608 777 144<br>
+        <strong>E-mail:</strong> info@lofn.cz</p>
 
-    <main class="fade-in">
-        <section class="py-16 md:py-24 bg-white">
-            <div class="container mx-auto px-6 legal-content">
-                <h2>Obchodní podmínky</h2>
-                <p><strong>Provozovatel:</strong> P&A Thrax, s.r.o.<br>
-                <strong>IČO:</strong> 28657985<br>
-                <strong>DIČ:</strong> CZ28657985 , Detail plátce DPH<br>
-                <strong>Adresa:</strong> Holubova 1204/27, Vítkovice, 703 00 Ostrava<br>
-                <strong>Telefon:</strong> +420 608 777 144<br>
-                <strong>E-mail:</strong> info@lofn.cz</p>
 
                 <h3>1. ÚVODNÍ USTANOVENÍ</h3>
                 <p>1.1 Tyto obchodní podmínky („obchodní podmínky“) společnosti P&A Thrax, s.r.o., IČO: 28657985, se sídlem Holubova 1204/27, Vítkovice, 703 00 Ostrava, zapsané v obchodním rejstříku vedeném Krajským soudem v Ostravě, oddíl B, vložka 2307 („Prodávající“) upravují vzájemná práva a povinnosti smluvních stran vzniklá v souvislosti nebo na základě kupní smlouvy na zboží uzavírané mezi Prodávajícím a jinou fyzickou osobou („Kupující“) prostřednictvím internetového obchodu Prodávajícího provozovaného na webové stránce („Internetový obchod“) umístěné na internetové adrese www.lofn.cz („webová stránka“), a to prostřednictvím rozhraní webové stránky („webové rozhraní obchodu“). Tyto obchodní podmínky se vztahují i na služby nabízené a poskytované Prodávajícím Kupujícímu v souvislosti s nabízením a prodejem zboží.</p>
@@ -182,48 +132,7 @@
                 <p>13.3 Loga a jiná označení jsou chráněna ochrannými známkami příslušných vlastníků. Ostatní materiály publikované v Internetovém obchodě pak mohou rovněž být chráněny předpisy na ochranu autorských práv. Produkty a služby, které jsou na webových stránkách uvedeny, informace o nich a jejich vyobrazení mohou dále být chráněny i dalšími právy na ochranu duševního vlastnictví.</p>
                 <p>13.4 Pokud vztah založený Kupní smlouvou obsahuje mezinárodní (zahraniční) prvek, pak strany sjednávají, že vztah se řídí českým právem s vyloučením aplikace Vídeňské úmluvy o smlouvách o mezinárodní koupi zboží. Tímto nejsou dotčena práva spotřebitele vyplývající z obecně závazných právních předpisů.</p>
                 <p>13.5 Tyto obchodní podmínky jsou platné a účinné od 19. 12. 2024.</p>
-            </div>
-        </section>
-    </main>
-    
-   <!-- PATIČKA DOPLNĚNA ZDE -->
-    <footer class="bg-white text-brand-text border-t border-gray-200">
-        <div class="container mx-auto px-6 py-12">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <div>
-                    <a href="index.html"><img src="obrazky/logo.jpg" alt="Logo Laboratoires" class="h-10 w-auto mb-4"></a>
-                    <p class="text-gray-600">Chytré doplňky stravy pro moderní životní styl.</p>
-                </div>
-                <div>
-                    <h4 class="text-lg font-bold mb-4">Navigace</h4>
-                    <ul class="space-y-2 text-gray-600">
-                        <li><a href="produkty.html" class="hover:text-brand-primary transition-colors">Produkty</a></li>
-                        <li><a href="o-nas.html" class="hover:text-brand-primary transition-colors">O nás</a></li>
-                        <li><a href="kontakt.html" class="hover:text-brand-primary transition-colors">Kontakt</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="text-lg font-bold mb-4">Informace</h4>
-                    <ul class="space-y-2 text-gray-600">
-                        <li><a href="obchodni-podminky.html" class="hover:text-brand-primary transition-colors">Obchodní podmínky</a></li>
-                        <li><a href="ochrana-udaju.html" class="hover:text-brand-primary transition-colors">Ochrana osobních údajů</a></li>
-                        <li class="pt-2 text-xs">P&A Thrax s.r.o., IČ: 28657985<br>Nerudova 8, 703 00 Ostrava</li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="text-lg font-bold mb-4">Sledujte nás</h4>
-                    <div class="flex space-x-4 text-gray-600">
-                        <a href="#" class="hover:text-brand-primary transition-colors" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
-                        <a href="#" class="hover:text-brand-primary transition-colors" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg></a>
-                    </div>
-                </div>
-            </div>
-            <div class="border-t border-gray-200 mt-8 pt-6 text-center text-gray-500 text-sm">
-                &copy; <span id="current-year"></span> Laboratoires.cz. Všechna práva vyhrazena.
-            </div>
-        </div>
-    </footer>
+               </div>
+</section>
 
-    <script src="script.js" defer></script>
-</body>
-</html>
+<?php include 'footer.php'; ?>
