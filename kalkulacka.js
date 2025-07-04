@@ -24,75 +24,76 @@ const dataset = {
 };
 
 document.addEventListener('DOMContentLoaded', function() {
-    const questionsContainer = document.getElementById('calculator-questions');
-    const calculateButton = document.getElementById('calculate-button');
-    const resultSection = document.getElementById('result-section');
+  const questionsContainer = document.getElementById('calculator-questions');
+  const calculateButton = document.getElementById('calculate-button');
+  const resultSection = document.getElementById('result-section');
 
-    if (!questionsContainer) return; // Spustit pouze na stránce s kalkulačkou
+  if (!questionsContainer) return; // Pouze na stránce kalkulačky
 
-    // Generate questions
-    dataset.questions.forEach(q => {
-        const questionEl = document.createElement('div');
-        questionEl.innerHTML = `
-            <label for="${q.id}" class="block text-lg font-medium text-brand-text mb-3 text-center">${q.text}</label>
-            <input type="range" id="${q.id}" min="1" max="5" value="3" class="w-full">
-            <div class="flex justify-between text-xs text-gray-500 mt-2 px-1">
-                <span>${q.scale['1']}</span>
-                <span>${q.scale['5']}</span>
-            </div>
-        `;
-        questionsContainer.appendChild(questionEl);
+  // Generate questions with frosted-glass cards & dynamic fill
+  dataset.questions.forEach(q => {
+    const questionEl = document.createElement('div');
+    questionEl.className = 'question-card';
+    questionEl.innerHTML = `
+      <label for="${q.id}" class="block text-lg font-medium text-white mb-3 text-center">${q.text}</label>
+      <input type="range" id="${q.id}" min="1" max="5" value="3">
+      <div class="flex justify-between text-xs text-gray-300 px-1">
+        <span>${q.scale['1']}</span>
+        <span>${q.scale['5']}</span>
+      </div>
+    `;
+    questionsContainer.appendChild(questionEl);
+
+    // Dynamic fill update
+    const slider = questionEl.querySelector('input[type=range]');
+    const updateFill = () => {
+      const pct = ((slider.value - slider.min) / (slider.max - slider.min)) * 100;
+      slider.style.setProperty('--value', pct + '%');
+    };
+    slider.addEventListener('input', updateFill);
+    updateFill();
+  });
+
+  // Calculate result
+  calculateButton.addEventListener('click', () => {
+    const userAnswers = dataset.questions.map(q => parseInt(document.getElementById(q.id).value, 10));
+    let bestMatch = null;
+    let minDistance = Infinity;
+
+    dataset.profiles.forEach(profile => {
+      let distance = profile.scores.reduce((sum, score, i) => sum + Math.abs(userAnswers[i] - score), 0);
+      if (distance < minDistance) {
+        minDistance = distance;
+        bestMatch = profile;
+      }
     });
 
-    // Calculate result
-    calculateButton.addEventListener('click', () => {
-        const userAnswers = dataset.questions.map(q => {
-            return parseInt(document.getElementById(q.id).value, 10);
-        });
+    displayResult(bestMatch);
+  });
 
-        let bestMatch = null;
-        let minDistance = Infinity;
+  // Display result
+  function displayResult(profile) {
+    const productsContainer = document.getElementById('result-products');
+    productsContainer.innerHTML = '';
 
-        dataset.profiles.forEach(profile => {
-            let distance = 0;
-            for (let i = 0; i < userAnswers.length; i++) {
-                distance += Math.abs(userAnswers[i] - profile.scores[i]);
-            }
+    profile.recommendedProducts.forEach(productName => {
+      const productEl = document.createElement('a');
+      const slug = productName.toLowerCase()
+        .replace(/ & /g, '-')
+        .replace(/ /g, '-')
+        .replace(/[^\w-]+/g, '');
 
-            if (distance < minDistance) {
-                minDistance = distance;
-                bestMatch = profile;
-            }
-        });
-        
-        displayResult(bestMatch);
+      productEl.href = `produkt-${slug}.php`;
+      productEl.className = 'group bg-brand-secondary p-4 rounded-lg flex items-center gap-4 text-left hover:shadow-md transition-shadow duration-300';
+      productEl.innerHTML = `
+        <img src="obrazky/${productName}.jpg" alt="${productName}" class="w-20 h-20 rounded-md object-cover flex-shrink-0" onerror="this.onerror=null;this.src='https://placehold.co/80x80/2d332a/ffffff?text=${productName.charAt(0)}';">
+        <span class="font-semibold text-lg text-brand-primary group-hover:text-brand-accent transition-colors">${productName}</span>
+      `;
+      productsContainer.appendChild(productEl);
     });
-    
-    // Display result
-    function displayResult(profile) {
-        const productsContainer = document.getElementById('result-products');
-        productsContainer.innerHTML = ''; // Clear previous results
-        
-        profile.recommendedProducts.forEach(productName => {
-            const productEl = document.createElement('a');
-            
-            const productSlug = productName.toLowerCase()
-                .replace(/ & /g, '-')
-                .replace(/ /g, '-')
-                .replace(/[^\w-]+/g, '');
-            
-            productEl.href = `produkt-${productSlug}.php`;
-            productEl.className = 'group bg-brand-secondary p-4 rounded-lg flex items-center gap-4 text-left hover:shadow-md transition-shadow duration-300';
 
-            productEl.innerHTML = `
-                <img src="obrazky/${productName}.jpg" alt="${productName}" class="w-20 h-20 rounded-md object-cover flex-shrink-0" onerror="this.onerror=null;this.src='https://placehold.co/80x80/2d332a/ffffff?text=${productName.charAt(0)}';">
-                <span class="font-semibold text-lg text-brand-primary group-hover:text-brand-accent transition-colors">${productName}</span>
-            `;
-            productsContainer.appendChild(productEl);
-        });
-
-        resultSection.classList.remove('hidden');
-        resultSection.classList.add('fade-in');
-        resultSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
+    resultSection.classList.remove('hidden');
+    resultSection.classList.add('fade-in');
+    resultSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
 });
