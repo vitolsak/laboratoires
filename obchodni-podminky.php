@@ -3,8 +3,10 @@ $pageTitle = "Obchodní podmínky - Laboratoires.cz";
 include 'header.php'; 
 ?>
 
-<section class="py-16 md:py-24 bg-white">
-    <div class="container mx-auto px-6 max-w-4xl legal-content">
+<main class="fade-in">
+    <section class="py-16 md:py-24 bg-white">
+        <!-- Změna zde: odstraněna třída max-w-4xl pro plnou šířku containeru -->
+        <div class="container mx-auto px-6 legal-content">
         <h2>Obchodní podmínky</h2>
         <p><strong>Provozovatel:</strong> P&A Thrax, s.r.o.<br>
         <strong>IČO:</strong> 28657985<br>
