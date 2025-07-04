@@ -16,9 +16,7 @@ WORKDIR /var/www/html
 COPY composer.json composer.lock ./
 RUN composer install --no-dev --optimize-autoloader
 
-# (Řádek COPY .env ./ smažeme – proměnné běží z ENV v prostředí Renderu)
-
-# 4) Zkopírujeme zbytek kódu
+# 5) Zkopírujeme zbytek kódu
 COPY . .
 
 # 5) Zapneme Apache mod_rewrite (pokud by bylo potřeba)
