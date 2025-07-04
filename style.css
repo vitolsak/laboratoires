@@ -34,3 +34,40 @@ body {
     -ms-overflow-style: none;
     scrollbar-width: none; 
 }
+/* Styly pro právní dokumenty a další textové stránky */
+.legal-content h2 { 
+    font-family: 'Playfair Display', serif; 
+    font-size: 2.25rem; /* 36px */
+    color: #2d332a; 
+    margin-bottom: 1.5rem; 
+}
+
+.legal-content h3 { 
+    font-family: 'Playfair Display', serif; 
+    font-size: 1.5rem; /* 24px */
+    color: #2d332a; 
+    margin-top: 2.5rem; 
+    margin-bottom: 1.5rem; 
+    border-bottom: 1px solid #e5e7eb; 
+    padding-bottom: 0.5rem; 
+    font-weight: 600; 
+    line-height: 1.3; 
+}
+
+.legal-content p, 
+.legal-content li { 
+    margin-bottom: 1.25em; 
+    line-height: 1.7; 
+}
+
+.legal-content ul { 
+    list-style-position: inside; 
+    list-style-type: disc; 
+    padding-left: 1rem; 
+    margin-bottom: 1.25em; 
+}
+
+.legal-content strong { 
+    color: #1c1c1c; 
+    font-weight: 700; 
+}
