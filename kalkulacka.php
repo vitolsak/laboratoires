@@ -4,7 +4,7 @@ include 'header.php';
 ?>
 
 <style>
-    /* Custom styles for the slider */
+    /* Vlastní styly pro posuvník */
     input[type=range] {
         -webkit-appearance: none;
         appearance: none;
@@ -30,6 +30,7 @@ include 'header.php';
         cursor: pointer;
         border-radius: 50%;
         border: 4px solid #f8f7f5; /* brand-secondary */
+        box-shadow: 0 0 5px rgba(0,0,0,0.1);
     }
 
     input[type=range]::-moz-range-thumb {
@@ -39,6 +40,7 @@ include 'header.php';
         cursor: pointer;
         border-radius: 50%;
         border: 4px solid #f8f7f5;
+        box-shadow: 0 0 5px rgba(0,0,0,0.1);
     }
 </style>
 
@@ -63,18 +65,11 @@ include 'header.php';
 
             <div id="result-section" class="max-w-3xl mx-auto mt-12 hidden">
                 <div class="bg-white p-8 rounded-lg shadow-lg border-t-4 border-brand-accent">
-                    <h3 class="text-2xl md:text-3xl font-serif text-brand-primary mb-4 text-center">Naše doporučení pro vás</h3>
                     <div id="result-content" class="text-center">
-                        <p class="text-lg text-gray-700 mb-2">Na základě vašich odpovědí se nejvíce podobáte profilu:</p>
-                        <p id="result-profile" class="text-2xl font-bold text-brand-accent mb-6"></p>
-                        
-                        <h4 class="font-bold text-brand-primary text-xl mb-3">Doporučené produkty:</h4>
-                        <div id="result-products" class="flex justify-center flex-wrap gap-4 mb-6">
+                        <h3 class="text-2xl md:text-3xl font-serif text-brand-primary mb-6">Na míru pro vás doporučujeme:</h3>
+                        <div id="result-products" class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                             <!-- Doporučené produkty se vloží zde -->
                         </div>
-
-                        <h4 class="font-bold text-brand-primary text-xl mb-2">Zdůvodnění:</h4>
-                        <p id="result-justification" class="text-gray-600 italic"></p>
                     </div>
                 </div>
             </div>
@@ -153,22 +148,24 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Display result
     function displayResult(profile) {
-        document.getElementById('result-profile').textContent = profile.profileName;
-        document.getElementById('result-justification').textContent = profile.justification;
-        
         const productsContainer = document.getElementById('result-products');
         productsContainer.innerHTML = ''; // Clear previous results
         
         profile.recommendedProducts.forEach(productName => {
-            const productEl = document.createElement('div');
-            productEl.className = 'bg-brand-secondary p-4 rounded-lg flex items-center gap-4';
+            const productEl = document.createElement('a');
             
-            // Map product name to image file
-            const imageName = productName.replace(/ & /g, '-').replace(/ /g, '-').toLowerCase();
+            // Vytvoření URL-friendly názvu pro odkaz a obrázek
+            const productSlug = productName.toLowerCase()
+                .replace(/ & /g, '-')
+                .replace(/ /g, '-')
+                .replace(/[^\w-]+/g, '');
             
+            productEl.href = `produkt-${productSlug}.php`;
+            productEl.className = 'group bg-brand-secondary p-4 rounded-lg flex items-center gap-4 text-left hover:shadow-md transition-shadow duration-300';
+
             productEl.innerHTML = `
-                <img src="https://placehold.co/64x64/2d332a/ffffff?text=${productName.charAt(0)}" alt="${productName}" class="w-16 h-16 rounded-md object-cover">
-                <span class="font-semibold text-brand-primary">${productName}</span>
+                <img src="obrazky/${productName}.jpg" alt="${productName}" class="w-20 h-20 rounded-md object-cover flex-shrink-0" onerror="this.onerror=null;this.src='https://placehold.co/80x80/2d332a/ffffff?text=${productName.charAt(0)}';">
+                <span class="font-semibold text-lg text-brand-primary group-hover:text-brand-accent transition-colors">${productName}</span>
             `;
             productsContainer.appendChild(productEl);
         });
