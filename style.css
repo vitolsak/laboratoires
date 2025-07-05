@@ -1,3 +1,6 @@
+/* ————————————————————————————————————————————————————————————————
+   Základní styly
+——————————————————————————————————————————————————————————————— */
 body {
     background-color: #ffffff;
 }
@@ -34,7 +37,10 @@ body {
     -ms-overflow-style: none;
     scrollbar-width: none; 
 }
-/* Styly pro právní dokumenty a další textové stránky */
+
+/* ————————————————————————————————————————————————————————————————
+   Styly pro právní dokumenty a další textové stránky
+——————————————————————————————————————————————————————————————— */
 .legal-content h2 { 
     font-family: 'Playfair Display', serif; 
     font-size: 2.25rem; /* 36px */
@@ -70,4 +76,57 @@ body {
 .legal-content strong { 
     color: #1c1c1c; 
     font-weight: 700; 
+}
+
+/* ————————————————————————————————————————————————————————————————
+   Nové styly pro kalkulačku (frosted glass karty & barevné jezdce)
+——————————————————————————————————————————————————————————————— */
+
+/* 1) Skleněné karty pro jednotlivé otázky */
+.question-card {
+    background: rgba(255,255,255,0.08);    /* jemné „frosted glass“ */
+    backdrop-filter: blur(6px);
+    padding: 1.25rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
+
+/* 2) Slider s dynamickým barevným fill efektem */
+input[type=range] {
+    --thumb-size: 24px;
+    --track-height: 8px;
+    --fill-color: #2d332a;   /* brand-primary */
+    --empty-color: #e5e7eb;  /* gray-200 */
+    width: 100%;
+    height: var(--track-height);
+    border-radius: var(--track-height);
+    appearance: none;
+    cursor: pointer;
+    background: linear-gradient(
+        to right,
+        var(--fill-color) 0%,
+        var(--fill-color) var(--value),
+        var(--empty-color) var(--value),
+        var(--empty-color) 100%
+    );
+}
+
+input[type=range]::-webkit-slider-thumb {
+    appearance: none;
+    width: var(--thumb-size);
+    height: var(--thumb-size);
+    background: var(--fill-color);
+    border: 4px solid #f8f7f5;    /* brand-secondary */
+    border-radius: 50%;
+    margin-top: calc((var(--track-height) - var(--thumb-size)) / 2);
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
+input[type=range]::-moz-range-thumb {
+    width: var(--thumb-size);
+    height: var(--thumb-size);
+    background: var(--fill-color);
+    border: 4px solid #f8f7f5;
+    border-radius: 50%;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
 }

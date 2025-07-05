@@ -33,7 +33,8 @@ $currentPage = basename($_SERVER['SCRIPT_NAME']);
                 <img src="obrazky/logo.jpg" alt="Logo Laboratoires" class="h-full w-auto">
             </a>
             <nav class="hidden md:flex items-center space-x-8">
-                <a href="produkty.php" class="nav-link hover:text-brand-accent <?php echo ($currentPage == 'produkty.php') ? 'text-brand-accent font-bold' : 'text-brand-text'; ?>">Produkty</a>
+                <a href="produkty.php" class="nav-link hover:text-brand-accent <?php echo ($currentPage == 'produkty.php' || strpos($currentPage, 'produkt-') === 0) ? 'text-brand-accent font-bold' : 'text-brand-text'; ?>">Produkty</a>
+                <a href="kalkulacka.php" class="nav-link hover:text-brand-accent <?php echo ($currentPage == 'kalkulacka.php') ? 'text-brand-accent font-bold' : 'text-brand-text'; ?>">Poradce výběru</a>
                 <a href="o-nas.php" class="nav-link hover:text-brand-accent <?php echo ($currentPage == 'o-nas.php') ? 'text-brand-accent font-bold' : 'text-brand-text'; ?>">O nás</a>
                 <a href="kontakt.php" class="nav-link hover:text-brand-accent <?php echo ($currentPage == 'kontakt.php') ? 'text-brand-accent font-bold' : 'text-brand-text'; ?>">Kontakt</a>
             </nav>
@@ -44,7 +45,8 @@ $currentPage = basename($_SERVER['SCRIPT_NAME']);
             </div>
         </div>
         <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100">
-            <a href="produkty.php" class="block text-center py-3 px-6 hover:bg-gray-100 transition-colors <?php echo ($currentPage == 'produkty.php') ? 'text-brand-accent font-bold' : 'text-brand-text'; ?>">Produkty</a>
+            <a href="produkty.php" class="block text-center py-3 px-6 hover:bg-gray-100 transition-colors <?php echo ($currentPage == 'produkty.php' || strpos($currentPage, 'produkt-') === 0) ? 'text-brand-accent font-bold' : 'text-brand-text'; ?>">Produkty</a>
+            <a href="kalkulacka.php" class="block text-center py-3 px-6 hover:bg-gray-100 transition-colors <?php echo ($currentPage == 'kalkulacka.php') ? 'text-brand-accent font-bold' : 'text-brand-text'; ?>">Poradce výběru</a>
             <a href="o-nas.php" class="block text-center py-3 px-6 hover:bg-gray-100 transition-colors <?php echo ($currentPage == 'o-nas.php') ? 'text-brand-accent font-bold' : 'text-brand-text'; ?>">O nás</a>
             <a href="kontakt.php" class="block text-center py-3 px-6 hover:bg-gray-100 transition-colors <?php echo ($currentPage == 'kontakt.php') ? 'text-brand-accent font-bold' : 'text-brand-text'; ?>">Kontakt</a>
         </div>
